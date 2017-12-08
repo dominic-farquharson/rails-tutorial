@@ -4,10 +4,19 @@ class ArticlesController < ApplicationController
 
   # create action /articles/create
   def create
-    puts "-------- "
-    puts params
-    render plain: params[:article].inspect
-    # json => render json: params[:article]
+    # creates model, only allowing title and text
+    @article = Article.new(article_params)
 
+    # saves to database
+    @article.save
+
+    # rediects to the show action
+    redirect_to @article
   end
+
+
+  private
+    def article_params
+      params.require(:article).permit(:title, :text)
+    end
 end
