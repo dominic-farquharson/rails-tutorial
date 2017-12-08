@@ -22,10 +22,13 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params)
 
     # saves to database
-    @article.save
-
-    # rediects to the show action
-    redirect_to @article
+    if @article.save
+      # rediects to the show action
+      redirect_to @article
+    else 
+      # renders form
+      render 'new' 
+    end
   end
 
 
