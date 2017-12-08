@@ -5,6 +5,7 @@ class ArticlesController < ApplicationController
   # in each controller in the following order: index, show, 
   # new, edit, create, update and destroy. 
   def index
+    @articles = Article.all
   end
 
   def show
