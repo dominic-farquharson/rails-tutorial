@@ -16,6 +16,10 @@ class ArticlesController < ApplicationController
   def new
   end
 
+  def edit
+    @article = Article.find(params[:id])
+  end
+
   # create action /articles/create
   def create
     # creates model, only allowing title and text
